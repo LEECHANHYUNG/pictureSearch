@@ -1,0 +1,38 @@
+/* Main Container style */
+.heart-list-container {
+  position: absolute;
+  width: 404px;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+
+  background: #f7f7fa;
+  overflow-y: scroll;
+}
+.heart-list-container header {
+  position: absolute;
+
+  line-height: 30px;
+  padding: 0 145px;
+  top: 80px;
+  background: transparent;
+  font-weight: 700;
+  font-size: 20px;
+
+  letter-spacing: -0.2px;
+
+  color: #000000;
+}
+
+/* Heart List Item*/
+.heart-list-item {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  top: 142px;
+  padding: 0 96px;
+}
+
+.heart-list-item > div {
+  margin-bottom: 20px;
+}
