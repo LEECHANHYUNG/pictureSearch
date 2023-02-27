@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import PictureContainer from "./PictureContainer";
+import ShowHeartButton from "./ShowHeartButton";
 
 const MainContainer = () => {
   const [initialState, setInitialState] = useState();
@@ -20,6 +21,7 @@ const MainContainer = () => {
   }, []);
   return (
     <Container className="picture-container" fluid="xxl">
+      <ShowHeartButton />
       <Col style={{ paddingLeft: 0, paddingRight: 0 }}>
         {initialState ? (
           <Row style={{ width: "1372px", marginLeft: 0, marginRight: 0 }}>
