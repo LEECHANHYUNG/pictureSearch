@@ -1,6 +1,6 @@
 /* Main Container style */
 .heart-list-container {
-  position: absolute;
+  position: fixed;
   width: 404px;
   height: 100%;
   right: 0px;
@@ -8,6 +8,8 @@
 
   background: #f7f7fa;
   overflow-y: scroll;
+
+  overflow-x: visible;
 }
 .heart-list-container header {
   position: absolute;
@@ -35,4 +37,26 @@
 
 .heart-list-item > div {
   margin-bottom: 20px;
+}
+
+/* List Close Button */
+.close-button {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  width: 40px;
+  height: 40px;
+  right: 429px;
+  top: 24px;
+
+  background: #5094fa;
+  border-radius: 3px;
+  border: none;
+}
+.close-button svg {
+  background: transparent;
 }

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import "../../style/HeartList.css";
 import PictureCard from "../Main/PictureCard";
-const HeartListContainer = () => {
+import CloseButton from "./CloseButton";
+const HeartListContainer = ({ showListHandler }) => {
   const item = {
     href: "https://images-assets.nasa.gov/image/PIA04634/collection.json",
     data: [
@@ -30,8 +31,15 @@ const HeartListContainer = () => {
   };
   return (
     <section className="heart-list-container">
+      <button className="close-button" onClick={showListHandler}>
+        <CloseButton />
+      </button>
       <header>좋아요 리스트 </header>
       <div className="heart-list-item">
+        <PictureCard item={item} />
+        <PictureCard item={item} />
+        <PictureCard item={item} />
+        <PictureCard item={item} />
         <PictureCard item={item} />
         <PictureCard item={item} />
         <PictureCard item={item} />
