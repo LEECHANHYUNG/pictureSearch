@@ -3,6 +3,10 @@ import React from "react";
 import App from "./App";
 
 import "/workspace/pictureSearch/src/goorm.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <BrowserRouter>
+    <Route path="/" component={App} />
+  </BrowserRouter>
+);

@@ -1,0 +1,50 @@
+/* Search Bar container */
+
+main .container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  width: 480px;
+  padding: 0px;
+  top: 113px;
+}
+
+.search-bar-container {
+  width: 480px;
+  height: 40px;
+}
+
+.dropdown {
+  width: 120px;
+}
+.dropdown button {
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0;
+  background: transparent;
+  color: #2b2d36;
+  border: 1px solid #cdced6;
+  border-radius: 3px 0px 0px 3px;
+}
+.input-container {
+  width: 276px;
+  height: 40px;
+  border: 1px solid #cdced6;
+  border-radius: 0px;
+}
+.input-container input[type="text"] {
+  width: 276px;
+  height: 38px;
+  padding: 0;
+  border: none;
+}
+
+.btn-group > button {
+  width: 84px;
+  height: 40px;
+  padding: 0;
+}
