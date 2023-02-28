@@ -25,6 +25,9 @@
 
   color: #000000;
 }
+.heart-list-item > p {
+  background: transparent;
+}
 
 /* Heart List Item*/
 .heart-list-item {
