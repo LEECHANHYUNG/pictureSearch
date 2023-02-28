@@ -1,7 +1,14 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   background: #fff;
+  overflow-y: hidden;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
 /* Main Header */
@@ -14,12 +21,59 @@
 .card-group {
   width: 1372px;
   margin-bottom: 20px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.show-heart-button {
+  position: fixed;
+  top: 269px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 9px 16px;
+
+  width: 169px;
+  height: 40px;
+
+  background: rgba(205, 206, 214, 0.08);
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+}
+.show-heart-button.show {
+  background: rgba(80, 148, 250, 0.24);
+}
+.show-heart-button.show div {
+  color: rgba(29, 108, 224, 1);
+}
+
+.show-heart-button div {
+  width: 109px;
+  height: 22px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+
+  text-align: center;
+  letter-spacing: -0.1px;
+
+  color: #525463;
+
+  background: transparent;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.show-heart-button svg {
+  background: transparent;
 }
 .picture-container {
   position: relative;
-  height: 100vh;
   width: 1372px;
-  top: 80px;
+  top: 243px;
   padding: 0px;
 }
 
@@ -63,4 +117,13 @@
   line-height: 22px;
   letter-spacing: -0.1px;
   overflow: hidden;
+}
+
+/* svg */
+.empty-heart {
+  position: absolute;
+  right: 12.26px;
+  top: 11.75px;
+  background: transparent;
+  cursor: pointer;
 }
