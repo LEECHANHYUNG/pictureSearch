@@ -20,9 +20,11 @@
 /* Picture container */
 .card-group {
   width: 1372px;
-  margin-bottom: 20px;
   height: 100vh;
   overflow-y: scroll;
+}
+.col-2.col {
+  padding-bottom: 20px;
 }
 
 .show-heart-button {
@@ -114,7 +116,7 @@
   height: 89px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 22px;
+  line-height: 23px;
   letter-spacing: -0.1px;
   overflow: hidden;
 }

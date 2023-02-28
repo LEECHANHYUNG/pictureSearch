@@ -3,14 +3,15 @@ import { FormControl, InputGroup } from "react-bootstrap";
 
 const SearchInput = () => {
   return (
-    <InputGroup>
-      <FormControl
+    <div className="input-container">
+      <input
         type="text"
+        className="form-control"
         placeholder="검색어를 입력해주세요."
         aria-label="Input group example"
-        aria-describedby="btnGroupAddon"
+        aria-describedby="btnGroupAddon2"
       />
-    </InputGroup>
+    </div>
   );
 };
 

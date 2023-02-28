@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Layout/Header";
-import Search from "./components/Search/Search";
-import { Container } from "react-bootstrap";
+import SearchBar from "./components/Search/SearchBar";
 import MainContainer from "./components/Main/MainContainer";
-import HeartListContainer from "./components/HeartList/HeartListContainer";
 class App extends Component {
   render() {
     return (
       <>
         <Header />
-        <Container>
-          <Search />
-        </Container>
-        <MainContainer />
+        <main>
+          <SearchBar />
+          <MainContainer />
+        </main>
       </>
     );
   }

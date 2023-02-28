@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import EmptyHeart from "../Svg/EmptyHeart";
 
 const PictureCard = ({ item }) => {
@@ -21,7 +21,7 @@ const PictureCard = ({ item }) => {
           {item.data[0].date_created}
         </Card.Text>
         <Card.Text className="picture-card-description">
-          {item.data[0].description}
+          {item.data[0].description.substr(0, 100) + "..."}
         </Card.Text>
       </Card.Body>
       <EmptyHeart className="empty-heart" />

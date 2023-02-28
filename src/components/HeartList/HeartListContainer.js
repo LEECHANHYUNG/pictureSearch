@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../style/HeartList.css";
 import PictureCard from "../Main/PictureCard";
 import CloseButton from "./CloseButton";

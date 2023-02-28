@@ -1,5 +1,5 @@
 import React from "react";
-import { CardGroup, Col, Row } from "react-bootstrap";
+import { CardGroup, Col } from "react-bootstrap";
 import PictureCard from "./PictureCard";
 
 const PictureContainer = ({ items }) => {
@@ -14,9 +14,10 @@ const PictureContainer = ({ items }) => {
               width: "212px",
               marginBottom: "20px",
             }}
+			key={elem.data[0].nasa_id} 
             className="col-2"
           >
-            <PictureCard item={elem} key={elem.data[0].nasa_id} />
+            <PictureCard item={elem} />
           </Col>
         ) : (
           ""
