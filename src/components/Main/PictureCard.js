@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import EmptyHeart from "../Svg/EmptyHeart";
+import PinkHeart from "../Svg/PinkHeart";
 
 const PictureCard = ({ item }) => {
+  const [isHearted, setIsHearted] = useState(false);
+  const reverseHeartedHandler = () => {
+    setIsHearted((prevState) => !prevState);
+  };
   return (
     <Card
       className="picture-card"
@@ -24,7 +29,11 @@ const PictureCard = ({ item }) => {
           {item.data[0].description.substr(0, 100) + "..."}
         </Card.Text>
       </Card.Body>
-      <EmptyHeart className="empty-heart" />
+      {!isHearted ? (
+        <EmptyHeart className="heart-icon" onClick={reverseHeartedHandler} />
+      ) : (
+        <PinkHeart className="heart-icon" onClick={reverseHeartedHandler} />
+      )}
     </Card>
   );
 };
