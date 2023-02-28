@@ -1,24 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../style/SearchBar.css";
 import { Button, Container, Row } from "react-bootstrap";
 
 import { ButtonGroup } from "react-bootstrap";
 import SearchInput from "./SearchInput";
 import SearchDropdown from "./SearchDropdown";
+import { useHistory } from "react-router-dom";
 
 const SearchBar = () => {
-  const options = [
-    { label: "Option 1", value: "option1" },
-    { label: "Option 2", value: "option2" },
-    { label: "Option 3", value: "option3" },
-  ];
+  const [query, setQuery] = useState("q");
+  const [page, setPage] = useState(1);
+  const [searchWord, setSearchWord] = useState("");
+  const history = useHistory();
+  const getSearchWord = (word) => {
+    setSearchWord(word);
+  };
+  const getImageListHandler = async (e) => {
+    e.preventDefault();
+    history.push({
+      pathname: "/search",
+      search: `${query}=${searchWord}&page=${page}`,
+    });
+  };
   return (
     <Container>
       <Row className="search-bar-container">
         <ButtonGroup>
           <SearchDropdown />
-          <SearchInput />
-          <Button variant="primary">검색하기</Button>
+          <form onSubmit={getImageListHandler}>
+            <SearchInput getSearchWord={getSearchWord} />
+          </form>
+          <Button variant="primary" onClick={getImageListHandler}>
+            검색하기
+          </Button>
         </ButtonGroup>
       </Row>
     </Container>

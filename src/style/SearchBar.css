@@ -38,7 +38,7 @@ main .container {
 }
 .input-container input[type="text"] {
   width: 276px;
-  height: 40px;
+  height: 38px;
   padding: 0;
   border: none;
 }

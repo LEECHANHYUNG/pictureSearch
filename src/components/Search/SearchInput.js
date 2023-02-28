@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FormControl, InputGroup } from "react-bootstrap";
 
-const SearchInput = () => {
+const SearchInput = ({ getSearchWord }) => {
+  const searchInputRef = useRef();
+  const changeSearchWordHandler = () => {
+    getSearchWord(searchInputRef.current.value);
+  };
   return (
     <div className="input-container">
       <input
@@ -10,6 +14,10 @@ const SearchInput = () => {
         placeholder="검색어를 입력해주세요."
         aria-label="Input group example"
         aria-describedby="btnGroupAddon2"
+        onChange={() => {
+          changeSearchWordHandler();
+        }}
+        ref={searchInputRef}
       />
     </div>
   );

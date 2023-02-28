@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   background: #fff;
-  overflow-y: hidden;
   font-family: "Noto Sans KR";
   font-style: normal;
 }
@@ -20,16 +19,16 @@
 /* Picture container */
 .card-group {
   width: 1372px;
-  height: 100vh;
   overflow-y: scroll;
 }
 .col-2.col {
-  padding-bottom: 20px;
+  height: 275px;
+  margin: 0 auto 20px auto;
 }
 
 .show-heart-button {
-  position: fixed;
-  top: 269px;
+  position: absolute;
+  top: -60px;
 
   display: flex;
   justify-content: space-around;
