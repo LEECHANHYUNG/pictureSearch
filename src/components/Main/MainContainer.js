@@ -11,7 +11,6 @@ const MainContainer = () => {
   const [imageList, setImageList] = useState();
   const [showListClicked, setShowListClicked] = useState(false);
   const { search } = useLocation();
-  console.log(search);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -30,6 +29,7 @@ const MainContainer = () => {
   const showListButtonHandler = () => {
     setShowListClicked(!showListClicked);
   };
+ 
   return (
     <>
       <SearchBar />
