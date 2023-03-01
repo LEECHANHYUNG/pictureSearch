@@ -3,6 +3,7 @@ import { CardGroup, Col, Container, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import useImageSearch from "../../useImageSearch";
 import HeartListContainer from "../HeartList/HeartListContainer";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import SearchBar from "../Search/SearchBar";
 import PictureCard from "./PictureCard";
 import ShowHeartButton from "./ShowHeartButton";
@@ -11,6 +12,7 @@ const MainContainer = () => {
   const [showListClicked, setShowListClicked] = useState(false);
   const [page, setPage] = useState(1);
   const { search } = useLocation();
+
   const observer = useRef();
 
   const [searchWordKey, searchWordValue] = search
@@ -20,7 +22,7 @@ const MainContainer = () => {
         .split("=")
     : ["q", ""];
 
-  const { isLoading, images } = useImageSearch(
+  const { isLoading, images, error } = useImageSearch(
     search.slice(0, search.length - 1),
     page
   );
@@ -57,7 +59,7 @@ const MainContainer = () => {
           showListClicked={showListClicked}
         />
         <Col style={{ paddingLeft: 0, paddingRight: 0 }}>
-          {images ? (
+          {images.length !== 0 ? (
             <Row style={{ width: "1372px", marginLeft: 0, marginRight: 0 }}>
               <CardGroup className="d-flex justify-content-between card-group">
                 {images.map((elem, idx) =>
@@ -85,9 +87,18 @@ const MainContainer = () => {
               </CardGroup>
             </Row>
           ) : (
-            ""
+            <div
+              style={{
+                position: "relative",
+                textAlign: "center",
+                top: "429px",
+              }}
+            >
+              "{searchWordValue}"에 대한 검색 결과가 없습니다.
+            </div>
           )}
         </Col>
+        {isLoading && !error && <LoadingSpinner />}
       </Container>
       {showListClicked ? (
         <HeartListContainer showListHandler={showListButtonHandler} />

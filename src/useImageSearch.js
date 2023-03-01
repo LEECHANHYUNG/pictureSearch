@@ -19,7 +19,7 @@ export default function useImageSearch(query, page) {
           method: "GET",
           url: query
             ? `https://images-api.nasa.gov/search${query + page}`
-            : `https://images-api.nasa.gov/search?q=galaxy&page=1`,
+            : `https://images-api.nasa.gov/search?q=galaxy&page=${page}`,
           cancelToken: new axios.CancelToken((c) => (cancel = c)),
         });
 
