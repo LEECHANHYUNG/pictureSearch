@@ -15,7 +15,7 @@ const HeartListContainer = ({ showListHandler }) => {
       </button>
       <header>좋아요 리스트 </header>
       <div className="heart-list-item">
-        {Object.keys(heartList).length !== 0 ? (
+        {heartList ? (
           Object.keys(heartList)
             .reverse()
             .map((elem) => <PictureCard item={heartList[elem]} key={elem} />)
