@@ -1,35 +1,41 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { CardGroup, Col, Container, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
+import useImageSearch from "../../useImageSearch";
 import HeartListContainer from "../HeartList/HeartListContainer";
 import SearchBar from "../Search/SearchBar";
-import PictureContainer from "./PictureContainer";
+import PictureCard from "./PictureCard";
 import ShowHeartButton from "./ShowHeartButton";
 
 const MainContainer = () => {
-  const [imageList, setImageList] = useState();
   const [showListClicked, setShowListClicked] = useState(false);
+  const [page, setPage] = useState(1);
   const { search } = useLocation();
+  const observer = useRef();
+  const { isLoading, images } = useImageSearch(
+    search.slice(0, search.length - 1),
+    page
+  );
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get(
-          search
-            ? `https://images-api.nasa.gov/search${search}`
-            : `https://images-api.nasa.gov/search?q=galaxy&page=1`
-        );
-        setImageList(data.collection.items);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
+    setPage(1);
   }, [search]);
+  const lastImageElementRef = useCallback(
+    (node) => {
+      if (isLoading) return;
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          setPage((prevPageNumber) => prevPageNumber + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [isLoading]
+  );
+
   const showListButtonHandler = () => {
     setShowListClicked(!showListClicked);
   };
- 
+
   return (
     <>
       <SearchBar />
@@ -39,9 +45,32 @@ const MainContainer = () => {
           showListClicked={showListClicked}
         />
         <Col style={{ paddingLeft: 0, paddingRight: 0 }}>
-          {imageList ? (
+          {images ? (
             <Row style={{ width: "1372px", marginLeft: 0, marginRight: 0 }}>
-              <PictureContainer items={Array.from(imageList)} />
+              <CardGroup className="d-flex justify-content-between card-group">
+                {images.map((elem, idx) =>
+                  elem.data[0].media_type === "image" ? (
+                    <Col
+                      style={{
+                        paddingLeft: 0,
+                        paddingRight: 0,
+                        width: "212px",
+                        marginBottom: "20px",
+                      }}
+                      key={elem.data[0].nasa_id}
+                      className="col-2"
+                    >
+                      {images.length === idx + 1 ? (
+                        <PictureCard ref={lastImageElementRef} item={elem} />
+                      ) : (
+                        <PictureCard item={elem} />
+                      )}
+                    </Col>
+                  ) : (
+                    ""
+                  )
+                )}
+              </CardGroup>
             </Row>
           ) : (
             ""

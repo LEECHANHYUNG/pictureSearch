@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { FormControl, InputGroup } from "react-bootstrap";
 
 const SearchInput = ({ getSearchWord }) => {
   const searchInputRef = useRef();

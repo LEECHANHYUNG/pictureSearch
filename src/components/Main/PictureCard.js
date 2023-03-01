@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { forwardRef, useContext, useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import HeartContext from "../../store/heart-context";
 import EmptyHeart from "../Svg/EmptyHeart";
 import PinkHeart from "../Svg/PinkHeart";
 
-const PictureCard = ({ item }) => {
+const PictureCard = forwardRef(({ item }, ref) => {
   const [isHearted, setIsHearted] = useState(false);
   const nasaId = item.data[0].nasa_id;
   const heartList = JSON.parse(sessionStorage.getItem("heartList"));
@@ -16,7 +16,6 @@ const PictureCard = ({ item }) => {
   }, [heartList]);
   const reverseHeartedHandler = () => {
     setIsHearted((prevState) => !prevState);
-    const items = JSON.parse(sessionStorage.getItem("heartList"));
 
     if (isHearted) {
       heartCtx.removeItem(nasaId);
@@ -43,6 +42,7 @@ const PictureCard = ({ item }) => {
     <Card
       className="picture-card"
       style={{ width: "212px", height: "274px", overflow: "hidden" }}
+      ref={ref}
     >
       <Card.Img variant="top" src={item.links[0].href} />
       <Card.Body style={{ width: "212px", padding: "8px 12px" }}>
@@ -67,6 +67,6 @@ const PictureCard = ({ item }) => {
       )}
     </Card>
   );
-};
+});
 
 export default PictureCard;

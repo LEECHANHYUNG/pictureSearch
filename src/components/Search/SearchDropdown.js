@@ -12,15 +12,9 @@ const SearchDropdown = () => {
         전체
       </button>
       <div className="dropdown-menu">
-        <a className="dropdown-item" href="#">
-          전체
-        </a>
-        <a className="dropdown-item" href="#">
-          제목
-        </a>
-        <a className="dropdown-item" href="#">
-          설명
-        </a>
+        <div className="dropdown-item">전체</div>
+        <div className="dropdown-item">제목</div>
+        <div className="dropdown-item">설명</div>
       </div>
     </div>
   );

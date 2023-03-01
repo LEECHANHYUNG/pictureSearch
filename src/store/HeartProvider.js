@@ -9,7 +9,6 @@ const defaultHeartState = {
 const heartReducer = (state, action) => {
   let itemsList = JSON.parse(sessionStorage.getItem("heartList"));
   if (action.type === "ADD") {
-    console.log(action);
     if (itemsList) {
       itemsList[action.item.data[0].nasa_id] = action.item;
     } else {

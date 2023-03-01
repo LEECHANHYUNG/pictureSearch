@@ -9,7 +9,6 @@ import { useHistory } from "react-router-dom";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("q");
-  const [page, setPage] = useState(1);
   const [searchWord, setSearchWord] = useState("");
   const history = useHistory();
   const getSearchWord = (word) => {
@@ -19,7 +18,7 @@ const SearchBar = () => {
     e.preventDefault();
     history.push({
       pathname: "/search",
-      search: `${query}=${searchWord}&page=${page}`,
+      search: `${query}=${searchWord}&page=1`,
     });
   };
   return (
