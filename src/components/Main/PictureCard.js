@@ -57,7 +57,9 @@ const PictureCard = forwardRef(({ item }, ref) => {
           {item.data[0].date_created}
         </Card.Text>
         <Card.Text className="picture-card-description">
-          {item.data[0].description.substr(0, 100) + "..."}
+          {item.data[0].description
+            ? item.data[0].description.substr(0, 100) + "..."
+            : ""}
         </Card.Text>
       </Card.Body>
       {!isHearted ? (

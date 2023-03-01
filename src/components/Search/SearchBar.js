@@ -21,11 +21,14 @@ const SearchBar = () => {
       search: `${query}=${searchWord}&page=1`,
     });
   };
+  const getQuery = (value) => {
+    setQuery(value);
+  };
   return (
     <Container>
       <Row className="search-bar-container">
         <ButtonGroup>
-          <SearchDropdown />
+          <SearchDropdown getQuery={getQuery} query = {query}/>
           <form onSubmit={getImageListHandler}>
             <SearchInput getSearchWord={getSearchWord} />
           </form>

@@ -18,7 +18,7 @@ main .container {
 .dropdown {
   width: 120px;
 }
-.dropdown button {
+.dropdown .dropdown-toggle {
   width: 120px;
   height: 40px;
   display: flex;
@@ -29,6 +29,9 @@ main .container {
   color: #2b2d36;
   border: 1px solid #cdced6;
   border-radius: 3px 0px 0px 3px;
+}
+.dropdown .dropdown-menu {
+  min-width: 120px;
 }
 .input-container {
   width: 276px;
