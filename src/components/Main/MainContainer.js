@@ -35,6 +35,7 @@ const MainContainer = () => {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
+          console.log(entries);
           setPage((prevPageNumber) => prevPageNumber + 1);
         }
       });
@@ -62,28 +63,24 @@ const MainContainer = () => {
           {images.length !== 0 ? (
             <Row style={{ width: "1372px", marginLeft: 0, marginRight: 0 }}>
               <CardGroup className="d-flex justify-content-between card-group">
-                {images.map((elem, idx) =>
-                  elem.data[0].media_type === "image" ? (
-                    <Col
-                      style={{
-                        paddingLeft: 0,
-                        paddingRight: 0,
-                        width: "212px",
-                        marginBottom: "20px",
-                      }}
-                      key={elem.data[0].nasa_id}
-                      className="col-2"
-                    >
-                      {images.length === idx + 1 ? (
-                        <PictureCard ref={lastImageElementRef} item={elem} />
-                      ) : (
-                        <PictureCard item={elem} />
-                      )}
-                    </Col>
-                  ) : (
-                    ""
-                  )
-                )}
+                {images.map((elem, idx) => (
+                  <Col
+                    style={{
+                      paddingLeft: 0,
+                      paddingRight: 0,
+                      width: "212px",
+                      marginBottom: "20px",
+                    }}
+                    key={elem.data[0].nasa_id}
+                    className="col-2"
+                  >
+                    {images.length === idx + 1 ? (
+                      <PictureCard ref={lastImageElementRef} item={elem} />
+                    ) : (
+                      <PictureCard item={elem} />
+                    )}
+                  </Col>
+                ))}
               </CardGroup>
             </Row>
           ) : (

@@ -44,7 +44,7 @@ const PictureCard = forwardRef(({ item }, ref) => {
       style={{ width: "212px", height: "274px", overflow: "hidden" }}
       ref={ref}
     >
-      <Card.Img variant="top" src={item.links[0].href} />
+      <Card.Img variant="top" src={item.links ? item.links[0].href : ""} />
       <Card.Body style={{ width: "212px", padding: "8px 12px" }}>
         <Card.Title
           as="h5"

@@ -8,8 +8,7 @@ export default function LoadingSpinner() {
           width: "3rem",
           height: "3rem",
           backgroundColor: "transparent",
-          position: "relative",
-          top: "274px",
+
         }}
         role="status"
       >
