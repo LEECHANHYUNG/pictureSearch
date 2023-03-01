@@ -1,6 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
-const SearchInput = ({ getSearchWord }) => {
+const SearchInput = ({ getSearchWord, searchWordValue }) => {
+  useEffect(() => {
+    searchInputRef.current.value = searchWordValue;
+  }, [searchWordValue]);
   const searchInputRef = useRef();
   const changeSearchWordHandler = () => {
     getSearchWord(searchInputRef.current.value);

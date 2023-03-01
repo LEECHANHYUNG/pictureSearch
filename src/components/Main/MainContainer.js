@@ -12,6 +12,14 @@ const MainContainer = () => {
   const [page, setPage] = useState(1);
   const { search } = useLocation();
   const observer = useRef();
+
+  const [searchWordKey, searchWordValue] = search
+    ? search
+        .split("&")[0]
+        .slice(1)
+        .split("=")
+    : ["q", ""];
+
   const { isLoading, images } = useImageSearch(
     search.slice(0, search.length - 1),
     page
@@ -38,7 +46,10 @@ const MainContainer = () => {
 
   return (
     <>
-      <SearchBar />
+      <SearchBar
+        searchWordKey={searchWordKey}
+        searchWordValue={searchWordValue}
+      />
       <Container className="picture-container" fluid="xxl">
         <ShowHeartButton
           onClick={showListButtonHandler}

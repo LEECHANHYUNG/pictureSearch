@@ -7,6 +7,7 @@ import NoHeartListContainer from "./NoHeartListContainer";
 const HeartListContainer = ({ showListHandler }) => {
   const heartCtx = useContext(HeartContext);
   const heartList = heartCtx.items;
+  console.log(heartList);
   return (
     <section className="heart-list-container">
       <button className="close-button" onClick={showListHandler}>

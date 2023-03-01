@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../style/SearchBar.css";
 import { Button, Container, Row } from "react-bootstrap";
 
@@ -7,13 +7,19 @@ import SearchInput from "./SearchInput";
 import SearchDropdown from "./SearchDropdown";
 import { useHistory } from "react-router-dom";
 
-const SearchBar = () => {
+const SearchBar = ({ searchWordValue, searchWordKey }) => {
   const [query, setQuery] = useState("q");
   const [searchWord, setSearchWord] = useState("");
   const history = useHistory();
   const getSearchWord = (word) => {
     setSearchWord(word);
   };
+  useEffect(() => {
+    setQuery(searchWordKey);
+  }, [searchWordKey]);
+  useEffect(() => {
+    setSearchWord(searchWordValue);
+  }, [searchWordValue]);
   const getImageListHandler = async (e) => {
     e.preventDefault();
     history.push({
@@ -28,9 +34,12 @@ const SearchBar = () => {
     <Container>
       <Row className="search-bar-container">
         <ButtonGroup>
-          <SearchDropdown getQuery={getQuery} query = {query}/>
+          <SearchDropdown getQuery={getQuery} query={query} />
           <form onSubmit={getImageListHandler}>
-            <SearchInput getSearchWord={getSearchWord} />
+            <SearchInput
+              getSearchWord={getSearchWord}
+              searchWordValue={searchWordValue}
+            />
           </form>
           <Button variant="primary" onClick={getImageListHandler}>
             검색하기

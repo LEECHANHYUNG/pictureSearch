@@ -1,13 +1,13 @@
 import React from "react";
 
 const SearchDropdown = ({ getQuery, query }) => {
-  const changeQuery = (e) => {
-    getQuery(e.target.attributes.value.nodeValue);
-  };
   const menuName = {
     q: "전체",
     title: "제목",
     description: "설명",
+  };
+  const changeQuery = (e) => {
+    getQuery(e.target.attributes.value.nodeValue);
   };
   return (
     <div className="dropdown">
